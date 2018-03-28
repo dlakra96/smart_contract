@@ -7,6 +7,9 @@ myDapp
 <script src="web3.js/dist/web3.min.js">
 </script>
 <script type="text/javascript">
+var contract_address="0x7D5E2Beb13e6601C2C3aebAD632f16fF01287A74";
+var contract_abi=[ { "constant": true, "inputs": [], "name": "getCreator", "outputs": [ { "name": "", "type": "address", "value": "0x43188ee2e097e1b03b0c01f2ba871c66f5c78373" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "kill", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "value", "type": "uint256" } ], "name": "setMyNumber", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "getMyNumber", "outputs": [ { "name": "", "type": "uint256", "value": "3" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "payable": true, "stateMutability": "payable", "type": "fallback" } ];
+
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
@@ -16,6 +19,11 @@ if (typeof web3 !== 'undefined') {
 function getBalance()
 {
 document.getElementById("myBalance").innerText=web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]),"ether");
+}
+var contract_instance=web.eth.contract(contract_abi).at(contract_address);
+function getCounter()
+{
+	document.getElementById("myCounter").innerText=contract_instance.getMyNumber().toNumber();
 }
 </script>	
 </head>
