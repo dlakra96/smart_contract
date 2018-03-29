@@ -25,7 +25,7 @@ function getCounter()
 {
 	document.getElementById("myCounter").innerText=contract_instance.getMyNumber().toNumber();
 }
-/*function increaseCounter()
+function increaseCounter()
 {
 	var currentNumber=contract_instance.getMyNumber().toNumber();
 	currentNumber++;
@@ -46,7 +46,7 @@ function getCounter()
 }
 function callWhenMined(txHash,callback)
 {
-	web3.getTransactionReceipt(txHash,function(error,rcpt)
+	web3.eth.getTransactionReceipt(txHash,function(error,rcpt)
 	{
 		if(error)
 		{
@@ -66,7 +66,7 @@ function callWhenMined(txHash,callback)
 			}
 		}
 	})
-}*/
+}
 </script>	
 </head>
 <body>
