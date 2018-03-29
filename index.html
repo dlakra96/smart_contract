@@ -30,7 +30,7 @@ function increaseCounter()
 	var currentNumber=contract_instance.getMyNumber().toNumber();
 	currentNumber++;
 	web3.personal.unlockAccount(web3.eth.accounts[1],'account1@1177');
-	contract_instance.setMyNumber(currentNumber,{from : web3.eth.accounts[1]},function(error,result))
+	contract_instance.setMyNumber(currentNumber,{from : web3.eth.accounts[1]},function(error,result)
 	{
 		if(error)
 		{
@@ -42,7 +42,7 @@ function increaseCounter()
           console.log(txHash);
           callWhenMined(txHash,getCounter);
 		}
-	}
+	})
 }
 function callWhenMined(txHash,callback)
 {
