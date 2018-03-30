@@ -20,9 +20,9 @@
 var contract_instance=web3.eth.contract(contract_abi).at(contract_address);
 function getSupplierAddress()
 {
-document.getElementById("getSupp").innerText=(web3.eth.accounts[1]).toString();
-web3.personal.unlockAccount(web3.eth.accounts[1],"account1@1177");
-contract_instance.setSupplier(web3.eth.accounts[1],{from:web3.eth.accounts[1]},function(error,result){
+document.getElementById("getSupp").innerText=(web3.eth.accounts[0]).toString();
+web3.personal.unlockAccount(web3.eth.accounts[0],"account1@1177");
+contract_instance.setSupplier(web3.eth.accounts[0],{from:web3.eth.accounts[0]},function(error,result){
 	if(error)
 	{
 		console.error(error);
@@ -36,9 +36,9 @@ contract_instance.setSupplier(web3.eth.accounts[1],{from:web3.eth.accounts[1]},f
 }
 function getRetailerAddress()
 {
-document.getElementById("getRet").innerText=(web3.eth.accounts[2]).toString();
-web3.personal.unlockAccount(web3.eth.accounts[2],"account2@1177");
-contract_instance.setRetailer(web3.eth.accounts[2],{from:web3.eth.accounts[2]},function(error,result){
+document.getElementById("getRet").innerText=(web3.eth.accounts[1]).toString();
+web3.personal.unlockAccount(web3.eth.accounts[1],"account2@1177");
+contract_instance.setRetailer(web3.eth.accounts[1],{from:web3.eth.accounts[1]},function(error,result){
 	if(error)
 	{
 		console.error(error);
@@ -58,8 +58,8 @@ var s3=document.getElementById("comm_type").value.toString();
 var s4=document.getElementById("no_of_units").value.toString();
 var s5=now.toLocaleTimeString();
 var s6=now.toLocaleDateString();
-web3.personal.unlockAccount(web3.eth.accounts[1],"account1@1177");
-contract_instance.placeOrder(s1,s2,s3,s4,s5,s6,{from:web3.eth.accounts[1]},function(error,result){
+web3.personal.unlockAccount(web3.eth.accounts[0],"account1@1177");
+contract_instance.placeOrder(s1,s2,s3,s4,s5,s6,{from:web3.eth.accounts[0]},function(error,result){
 	if(error)
 	{
 		console.error(error);
@@ -85,8 +85,8 @@ function updateLocation()
 {
 var now=new Date();
 var loc=document.getElementById("curr_loc").value.toString();
-web3.personal.unlockAccount(web3.eth.accounts[1],"account1@1177");
-contract_instance.updateOrder(now.toLocaleDateString,now.toLocaleTimeString,loc,{from:web3.eth.accounts[1]},function(error,result){
+web3.personal.unlockAccount(web3.eth.accounts[0],"account1@1177");
+contract_instance.updateOrder(now.toLocaleDateString,now.toLocaleTimeString,loc,{from:web3.eth.accounts[0]},function(error,result){
 	if(error)
 	{
 		console.error(error);
