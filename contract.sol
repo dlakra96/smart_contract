@@ -45,6 +45,10 @@ contract myContract{
     function returnRetailer() public constant returns(address){
         return retailer_id;
     }
+    function returnDropLocation() public constant returns(string)
+    {
+        return drop_loc; 
+    }
     function orderDetails() public constant returns(string,string,string,string,uint){
       return (date,time,curr_loc,comm_type,no_of_units);  
     }
