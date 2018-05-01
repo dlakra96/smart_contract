@@ -18,8 +18,8 @@ body
 </head>s
 <script src="web3.js/dist/web3.min.js"></script>
 <script type="text/javascript">
-	var contract_address="0xE274cbDe852124Bc9b405d05211535fd2e5af183";
-	var contract_abi=[ { "constant": true, "inputs": [], "name": "checkDelievery", "outputs": [ { "name": "", "type": "bool", "value": true } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "t", "type": "address" } ], "name": "setSupplier", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "returnSupplier", "outputs": [ { "name": "", "type": "address", "value": "0xe5c4c881b538d3699ae455a95a6c28c025458f43" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "t", "type": "address" } ], "name": "setRetailer", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "pick", "type": "string" }, { "name": "drop", "type": "string" }, { "name": "comm", "type": "string" }, { "name": "nou", "type": "uint256" }, { "name": "curr_time", "type": "string" }, { "name": "curr_date", "type": "string" } ], "name": "placeOrder", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "curr_date", "type": "string" }, { "name": "curr_time", "type": "string" }, { "name": "loc", "type": "string" } ], "name": "updateOrder", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "orderDetails", "outputs": [ { "name": "", "type": "string", "value": "4/16/2018" }, { "name": "", "type": "string", "value": "2:52:27 PM" }, { "name": "", "type": "string", "value": "Pune" }, { "name": "", "type": "string", "value": "Car" }, { "name": "", "type": "uint256", "value": "10" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "returnRetailer", "outputs": [ { "name": "", "type": "address", "value": "0x0d5ab39ce9a3aa727b56715b5fe4d4e4c8312012" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "payable": true, "stateMutability": "payable", "type": "fallback" } ];
+	var contract_address="0xEe0709fe318596b726794875848f69030b192C58";
+	var contract_abi=[ { "constant": true, "inputs": [], "name": "checkDelievery", "outputs": [ { "name": "", "type": "bool", "value": true } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "t", "type": "address" } ], "name": "setSupplier", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "returnSupplier", "outputs": [ { "name": "", "type": "address", "value": "0x920857ead9f1b40fbd33dd940aa6a7e53ebf09e9" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "t", "type": "address" } ], "name": "setRetailer", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "pick", "type": "string" }, { "name": "drop", "type": "string" }, { "name": "comm", "type": "string" }, { "name": "nou", "type": "uint256" }, { "name": "curr_time", "type": "string" }, { "name": "curr_date", "type": "string" } ], "name": "placeOrder", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "returnDropLocation", "outputs": [ { "name": "", "type": "string", "value": "Mumbai" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "curr_date", "type": "string" }, { "name": "curr_time", "type": "string" }, { "name": "loc", "type": "string" } ], "name": "updateOrder", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "orderDetails", "outputs": [ { "name": "", "type": "string", "value": "4/17/2018" }, { "name": "", "type": "string", "value": "12:29:50 PM" }, { "name": "", "type": "string", "value": "Mumbai" }, { "name": "", "type": "string", "value": "Kites" }, { "name": "", "type": "uint256", "value": "25" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "returnRetailer", "outputs": [ { "name": "", "type": "address", "value": "0x1cb839b43f1a2b1c5171883fc4b2e34b0a86d39c" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "payable": true, "stateMutability": "payable", "type": "fallback" } ];
 	if (typeof web3 !== 'undefined') {
         web3 = new Web3(web3.currentProvider);
     } else {
@@ -30,7 +30,7 @@ var contract_instance=web3.eth.contract(contract_abi).at(contract_address);
 function getSupplierAddress()
 {
 document.getElementById("getSupp").innerText=(web3.eth.accounts[0]).toString();
-web3.personal.unlockAccount(web3.eth.accounts[0],"test1234");
+web3.personal.unlockAccount(web3.eth.accounts[0],"account1@1177");
 contract_instance.setSupplier(web3.eth.accounts[0],{from:web3.eth.accounts[0]},function(error,result){
 	if(error)
 	{
@@ -46,7 +46,7 @@ contract_instance.setSupplier(web3.eth.accounts[0],{from:web3.eth.accounts[0]},f
 function getRetailerAddress()
 {
 document.getElementById("getRet").innerText=(web3.eth.accounts[1]).toString();
-web3.personal.unlockAccount(web3.eth.accounts[1],"test1234");
+web3.personal.unlockAccount(web3.eth.accounts[1],"account2@1177");
 contract_instance.setRetailer(web3.eth.accounts[1],{from:web3.eth.accounts[1]},function(error,result){
 	if(error)
 	{
@@ -75,7 +75,7 @@ var s3=document.getElementById("comm_type").value.toString();
 var s4=document.getElementById("no_of_units").value;
 var s5=now.toLocaleTimeString();
 var s6=now.toLocaleDateString();
-web3.personal.unlockAccount(web3.eth.accounts[0],"test1234");
+web3.personal.unlockAccount(web3.eth.accounts[0],"account1@1177");
 contract_instance.placeOrder(s1,s2,s3,parseInt(s4),s5,s6,{from:web3.eth.accounts[0],gas:200000},function(error,result){
 	if(error)
 	{
@@ -105,7 +105,7 @@ function updateLocation()
 var now=new Date();
 var loc=document.getElementById("curr_loc").value.toString();
 
-web3.personal.unlockAccount(web3.eth.accounts[0],"test1234");
+web3.personal.unlockAccount(web3.eth.accounts[0],"account1@1177");
 contract_instance.updateOrder(now.toLocaleDateString(),now.toLocaleTimeString(),loc,{from:web3.eth.accounts[0],gas:220000},function(error,result){
 	if(error)
 	{
